@@ -1,7 +1,9 @@
 import Link from 'next/link'
 import type { SiteSettings } from '@/lib/types'
 
-export function Logo({ settings }: { settings: Pick<SiteSettings, 'site_name' | 'logo_url'> }) {
+const DEFAULT_BRAND: Pick<SiteSettings, 'site_name' | 'logo_url'> = { site_name: 'PromptAvero', logo_url: null }
+
+export function Logo({ settings = DEFAULT_BRAND }: { settings?: Pick<SiteSettings, 'site_name' | 'logo_url'> }) {
   return (
     <Link href="/" className="inline-flex items-center gap-2.5 font-semibold tracking-tight" aria-label={`${settings.site_name} home`}>
       {settings.logo_url ? (
